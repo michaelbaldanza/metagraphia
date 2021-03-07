@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<h1>Post Submission</h1>
+<form action="/posts" method="POST">
+  <label>Title</label>
+  <input type="text" name="title">
+  <label>Source</label>
+  <input type="text" name="source">
+  <label>Author</label>
+  <input type="text" name="author">
+  <label>Text</label>
+  <input type="text" name="text">
+  <input type="submit" value="Post">
+</form>
+<%- include('../partials/footer') %>

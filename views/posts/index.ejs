@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+<h1>Posts Index</h1>
+<a href="/posts/new">Add a post</a>
+
+<li>
+  <% posts.forEach(function(p) { %>
+    <ul><a href=" /posts/<%= p.id %>"><%= p.title %></a></ul>
+  <% }); %>
+</li>
+
+<%- include('../partials/footer') %>
