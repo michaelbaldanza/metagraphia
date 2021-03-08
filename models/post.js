@@ -6,6 +6,10 @@ const postSchema = new Schema ({
   author: String,
   source: String,
   text: String,
+  link: String,
+  pubYear: Number,
+}, {
+  timestamps: true,
 });
 
 module.exports = mongoose.model('Post', postSchema);

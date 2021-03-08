@@ -1,5 +1,7 @@
 <%- include('../partials/header') %>
 
 <h1><%= post.title %></h1>
+<p><%= post.text %></p>
+<p><%= post.author %>, <a href="<%= post.link %>"><%= post.source %></a></p>
 
 <%- include('../partials/footer') %>

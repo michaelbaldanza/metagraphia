@@ -5,7 +5,13 @@
 
 <li>
   <% posts.forEach(function(p) { %>
-    <ul><a href=" /posts/<%= p.id %>"><%= p.title %></a></ul>
+    <ul>
+      <a href=" /posts/<%= p.id %>"><%= p.title %></a>
+      <span><%= p.createdAt ? p.createdAt.toLocaleTimeString() : '' %></span>
+      <form action="/posts/<%= p.id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+      </form>
+    </ul>
   <% }); %>
 </li>
 

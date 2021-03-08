@@ -9,6 +9,12 @@ function create(req, res) {
   });
 }
 
+function deleteOne(req, res) {
+  Post.findByIdAndDelete(req.params.id, function (err, post) {
+    res.redirect('../posts');
+  });
+}
+
 function index(req, res) {
   Post.find({}, function(err, posts) {
     res.render('posts/index', { posts: posts});
@@ -27,6 +33,7 @@ function show(req, res) {
 
 module.exports = {
   create: create,
+  delete: deleteOne,
   index: index,
   new: newPost,
   show: show,
