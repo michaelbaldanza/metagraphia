@@ -15,6 +15,12 @@ function deleteOne(req, res) {
   });
 }
 
+function edit(req, res) {
+  Post.findById(req.params.id, function(err, post) {
+    res.render('posts/edit', { post: post });
+  });
+}
+
 function index(req, res) {
   Post.find({}, function(err, posts) {
     res.render('posts/index', { posts: posts});
@@ -31,10 +37,24 @@ function show(req, res) {
   });
 }
 
+function update(req, res) {
+  Post.findById(req.params.id, function(err, post) {
+    const field = ['title', 'source', 'link', 'author', 'text'];
+    for (i = 0; i < field.length; i++) {
+      post[field[i]] = req.body[field[i]];
+    }
+    post.save(function (err) {
+      res.redirect(`../posts/${post.id}`);
+    });
+  });
+}
+
 module.exports = {
   create: create,
   delete: deleteOne,
+  edit: edit,
   index: index,
   new: newPost,
   show: show,
+  update: update,
 }
