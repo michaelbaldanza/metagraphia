@@ -1,18 +1,43 @@
 <%- include('../partials/header') %>
 
-<h1>Posts Index</h1>
-<a href="/posts/new">Add a post</a>
+<h2>Entries</h2>
+<a href="/posts/new">New entry</a>
 
-<li>
-  <% posts.forEach(function(p) { %>
-    <ul>
-      <a href=" /posts/<%= p.id %>"><%= p.title %></a>
-      <span><%= p.createdAt ? p.createdAt.toLocaleTimeString() : '' %></span>
-      <form action="/posts/<%= p.id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete</button>
-      </form>
-    </ul>
-  <% }); %>
-</li>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Source</th>
+      <th scope="col">Published</th>
+      <th scope="col">Date Added</th>
+      <th scope="col">Tags</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% posts.forEach(function(p) {%> 
+      <tr>
+        <td>
+          <a href=" /posts/<%= p.id %>"><%= p.title %></a>
+        </td>
+        <td><%= p.author ? p.author : 'no author' %></td>
+        <td>
+          <a href="<%= p.link ? p.link : '#' %>">
+            <%= p.source ? p.source : 'no source' %>
+          </a>
+        </td>
+        <td><%= p.pubYear ? p.pubYear : 'No year' %></td>
+        <td><%= p.createdAt ? p.createdAt.toLocaleDateString() : '' %></td>
+        <td>Tags</td>
+        <td>
+          <form class="post-item" action="/posts/<%= p.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-outline-dark btn-sm">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
 
 <%- include('../partials/footer') %>
