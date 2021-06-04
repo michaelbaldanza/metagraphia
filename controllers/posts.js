@@ -1,5 +1,18 @@
 const Post = require('../models/post');
 
+// options for toLocale___String()
+const options = {
+  date: {
+    year: 'numeric',
+    month:'long',
+    day: 'numeric',
+  },
+  time: {
+    hour: '2-digit',
+    minute: '2-digit',
+  },
+}
+
 function create(req, res) {
   const post = new Post(req.body);
   post.save(function (err) {
@@ -23,7 +36,7 @@ function edit(req, res) {
 
 function index(req, res) {
   Post.find({}, function(err, posts) {
-    res.render('posts/index', { posts: posts});
+    res.render('posts/index', { posts: posts, date: options.date });
   });
 }
 
@@ -33,7 +46,14 @@ function newPost(req, res) {
 
 function show(req, res) {
   Post.findById(req.params.id, function(err, post) {
-    res.render('posts/show', { post: post });
+    let myTimeString = post.createdAt.toLocaleTimeString([], options.time);
+    let displayTime = '';
+    if (myTimeString[0] === '0') {
+      displayTime = myTimeString.slice(1);
+    } else {
+      displayTime = myTimeString;
+    }
+    res.render('posts/show', { post: post, date: options.date, time: displayTime });
   });
 }
 

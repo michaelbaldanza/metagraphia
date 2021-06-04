@@ -1,13 +1,20 @@
 <%- include('../partials/header') %>
 
 <a href="/posts">All Entries</a>
-<p><%= post.createdAt.toLocaleDateString() %></p>
+<p>
+  <%=
+    `${post.createdAt.toLocaleDateString('en-US', date)}
+    at ${time}`
+  %>
+</p>
 <h3><%= post.title %></h3>
 <a href="/posts/<%= post.id %>/edit">Edit</a>
 <p><%= post.text %></p>
 
 <% if (post.author) { %>
-  <p><%= post.author %>, <a href="<%= post.link %>"><%= post.source %></a></p>
+  <p>
+    <%= post.author %>, <a href="<%= post.link %>"><%= post.source %></a>
+  </p>
 <% } else { %>
   <a href="<%= post.link %>"><%= post.source %></a></p>
 <% } %>
