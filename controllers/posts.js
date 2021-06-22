@@ -15,6 +15,25 @@ const options = {
 
 function create(req, res) {
   const post = new Post(req.body);
+  let tags = req.body['tags'].split(',');
+  post['tags'] = tags;
+  // the following line, including the for loop, address the automatic
+  // inclusion of '\r' at the end of each array item, and also get rid of
+  // surplus <p> elements, which would otherwise be created by array items of 
+  // empty strings.
+  let paragraphs = req.body['text'].split('\n');
+  let paras = [];
+  for (i = 0; i < paragraphs.length; i++) {
+    if (paragraphs[i] === '\r') {
+      paragraphs.splice(i, 1);
+    }
+    let splcIdx = paragraphs[i].indexOf('\r');
+    let myText = paragraphs[i].slice(0, splcIdx);
+    paras.push(myText);
+    console.log(paragraphs[i]);
+    console.log(splcIdx);
+  }
+  post['text'] = paras;
   post.save(function (err) {
     if (err) return res.render('posts/new');
     console.log(post);

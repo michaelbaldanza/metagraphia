@@ -21,13 +21,13 @@
         <td class="align-middle">
           <a href=" /posts/<%= p.id %>"><%= p.title %></a>
         </td>
-        <td class="align-middle"><%= p.author ? p.author : 'no author' %></td>
+        <td class="align-middle"><%= p.author %></td>
         <td>
           <a href="<%= p.link ? p.link : '#' %>" class="align-middle">
-            <%= p.source ? p.source : 'no source' %>
+            <%= p.source %>
           </a>
         </td>
-        <td class="align-middle"><%= p.pubYear ? p.pubYear : 'No year' %></td>
+        <td class="align-middle"><%= p.pubYear %></td>
         <td class="align-middle">
           <%=
             p.createdAt ? p.createdAt.toLocaleDateString('en-US', date) : ''

@@ -7,11 +7,11 @@ const postSchema = new Schema ({
     required: true,
   }, author: String,
   source: String,
-  text: {
+  text: [{
     type: String,
     required: true,
-  }, link: String,
-  tags: [String],
+  }], link: String,
+  tags: [{type: String, lowercase: true}],
   pubYear: Number,
 }, {
   timestamps: true,
