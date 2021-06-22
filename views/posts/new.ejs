@@ -2,16 +2,34 @@
 
 <h1>Post Submission</h1>
 <form action="/posts" method="POST">
-  <label>Title</label>
-  <input type="text" name="title">
-  <label>Source</label>
-  <input type="text" name="source">
-  <label>Link</label>
-  <input type="text" name="link">
-  <label>Author</label>
-  <input type="text" name="author">
-  <label>Text</label>
-  <input type="text" name="text">
-  <input type="submit" value="Post">
+  <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" class="form-control" name="title">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Source</label>
+    <input type="text" class="form-control" name="source">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Link</label>
+    <input type="text" class="form-control" name="link">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Author</label>
+    <input type="text" class="form-control" name="author">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">First Published</label>
+    <input type="number" class="form-control" name="pubYear">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Text</label>
+    <textarea class="form-control" name="text"></textarea>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Tags</label>
+    <input type="text" class="form-control" name="tags">
+  </div>
+  <input type="submit" class="btn btn-primary" value="Post">
 </form>
 <%- include('../partials/footer') %>

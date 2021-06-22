@@ -33,7 +33,15 @@
             p.createdAt ? p.createdAt.toLocaleDateString('en-US', date) : ''
           %>
         </td>
-        <td class="align-middle">Tags</td>
+        <td class="align-middle">
+          <% p.tags.forEach(function (tag, idx) { %>
+            <% if (idx === (p.tags.length - 1)) { %>
+              <span><%= tag %></span>
+            <% } else { %>
+              <span><%= tag %>, </span>
+            <% } %>
+          <% }); %>
+        </td>
         <td>
           <form action="/posts/<%= p.id %>?_method=DELETE" method="POST">
             <button type="submit" class="btn btn-outline-dark btn-sm">

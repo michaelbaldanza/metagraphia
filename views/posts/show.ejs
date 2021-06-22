@@ -19,6 +19,16 @@
   <a href="<%= post.link %>"><%= post.source %></a></p>
 <% } %>
 
+<p>
+  <% post.tags.forEach(function (tag, idx) { %>
+    <% if (idx === (post.tags.length - 1)) { %>
+      <span><%= tag %></span>
+    <% } else { %>
+      <span><%= tag %>, </span>
+    <% } %>
+  <% }); %>
+</p>
+
 
 
 <%- include('../partials/footer') %>

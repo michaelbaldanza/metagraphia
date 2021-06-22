@@ -30,6 +30,7 @@ function deleteOne(req, res) {
 
 function edit(req, res) {
   Post.findById(req.params.id, function(err, post) {
+    console.log(post);
     res.render('posts/edit', { post: post });
   });
 }
@@ -59,10 +60,14 @@ function show(req, res) {
 
 function update(req, res) {
   Post.findById(req.params.id, function(err, post) {
-    const field = ['title', 'source', 'link', 'author', 'text'];
+    const field = [
+      'title', 'source', 'link', 'author', 'pubYear', 'text'
+    ];
+    let tags = req.body['tags'].split(',');
     for (i = 0; i < field.length; i++) {
       post[field[i]] = req.body[field[i]];
     }
+    post['tags'] = tags;
     post.save(function (err) {
       res.redirect(`../posts/${post.id}`);
     });

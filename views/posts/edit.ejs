@@ -2,17 +2,69 @@
 
 <h1>Edit "<%= post.title %>"</h1>
 <form action="/posts/<%= post.id %>?_method=PUT" method="POST">
-  <label>Title</label>
-  <input type="text" name="title" value="<%= post.title %>">
-  <label>Source</label>
-  <input type="text" name="source" value="<%= post.source %>">
-  <label>Link</label>
-  <input type="text" name="link" value="<%= post.link %>">
-  <label>Author</label>
-  <input type="text" name="author" value="<%= post.author %>">
-  <label>Text</label>
-  <input type="text" name="text" value="<%= post.text %>">
-  <button type="submit">Edit post</button>
+  <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      name="title"
+      value="<%= post.title %>">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Source</label>
+    <input
+      type="text"
+      class="form-control"
+      name="source"
+      value="<%= post.source %>"
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Link</label>
+    <input
+      type="text"
+      class="form-control"
+      name="link" 
+      value="<%= post.link %>"
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Author</label>
+    <input
+      type="text"
+      class="form-control"
+      name="author"
+      value="<%= post.author %>"
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label">First Published</label>
+    <input
+      type="number"
+      class="form-control"
+      name="pubYear"
+      value="<%= post.pubYear %>"
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Text</label>
+    <input
+      type="text"
+      class="form-control"
+      name="text"
+      value="<%= post.text %>"
+    >
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Tags</label>
+    <input
+      type="text"
+      class="form-control"
+      name="tags"
+      value="<%= post.tags %>"
+    >
+  </div>
+  <button type="submit" class="btn btn-primary">Edit post</button>
 </form>
 
 <%- include('../partials/header') %>
