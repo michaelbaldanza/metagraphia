@@ -3,55 +3,54 @@
 <h2>Entries</h2>
 <a href="/posts/new">New entry</a>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Title</th>
-      <th scope="col">Author</th>
-      <th scope="col">Source</th>
-      <th scope="col">Published</th>
-      <th scope="col">Date Added</th>
-      <th scope="col">Tags</th>
-      <th scope="col">Delete</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% posts.forEach(function(p) {%> 
+<div class="table-responsive" id="entry-container">
+  <table class="table">
+    <thead>
       <tr>
-        <td class="align-middle">
-          <a href=" /posts/<%= p.id %>"><%= p.title %></a>
-        </td>
-        <td class="align-middle"><%= p.author %></td>
-        <td>
-          <a href="<%= p.link ? p.link : '#' %>" class="align-middle">
-            <%= p.source %>
-          </a>
-        </td>
-        <td class="align-middle"><%= p.pubYear %></td>
-        <td class="align-middle">
-          <%=
-            p.createdAt ? p.createdAt.toLocaleDateString('en-US', date) : ''
-          %>
-        </td>
-        <td class="align-middle">
-          <% p.tags.forEach(function (tag, idx) { %>
-            <% if (idx === (p.tags.length - 1)) { %>
-              <span><%= tag %></span>
-            <% } else { %>
-              <span><%= tag %>, </span>
-            <% } %>
-          <% }); %>
-        </td>
-        <td>
-          <form action="/posts/<%= p.id %>?_method=DELETE" method="POST">
-            <button type="submit" class="btn btn-outline-dark btn-sm">
-              Delete
-            </button>
-          </form>
-        </td>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Source</th>
+        <th scope="col">Published</th>
+        <th scope="col">Date Added</th>
+        <th scope="col">Delete</th>
       </tr>
-    <% }); %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% posts.forEach(function(p) {%> 
+        <tr>
+          <td class="align-middle">
+            
+              <a href=" /posts/<%= p.id %>"><%= p.title %></a>
+          </td>
+          <td class="align-middle"><%= p.author %></td>
+          <td>
+            
+              <a href="<%= p.link ? p.link : '#' %>" class="align-middle">
+                <%= p.source %>
+              </a>
+          </td>
+          <td class="align-middle">
+            
+              <%= p.pubYear %>
+          </td>
+          <td class="align-middle">
+            
+              <%=
+              p.createdAt ? p.createdAt.toLocaleDateString('en-US', date) : ''
+              %>
+          </td>
+          <td>
+            
+              <form action="/posts/<%= p.id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-outline-dark btn-sm">
+                  Delete
+                </button>
+              </form>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
 
 <%- include('../partials/footer') %>

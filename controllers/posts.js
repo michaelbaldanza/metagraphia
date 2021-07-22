@@ -17,10 +17,9 @@ function create(req, res) {
   const post = new Post(req.body);
   let tags = req.body['tags'].split(',');
   post['tags'] = tags;
-  // the following line, including the for loop, address the automatic
-  // inclusion of '\r' at the end of each array item, and also get rid of
-  // surplus <p> elements, which would otherwise be created by array items of 
-  // empty strings.
+  // the following lines, including the for loop, address the automatic
+  // inclusion of '\r' at the end of each array item prevent the creation of
+  // surplus <p> elements.
   let paragraphs = req.body['text'].split('\n');
   let paras = [];
   for (i = 0; i < paragraphs.length; i++) {
